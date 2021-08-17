@@ -14,8 +14,6 @@ Python 3.5.2+
 To run the server, please execute the following from the root directory:
 
 ```
-cd server
-sudo python3 setup.py install
 pip3 install -r requirements.txt
 python3 -m swagger_server
 ```
@@ -23,13 +21,13 @@ python3 -m swagger_server
 and open your browser to here:
 
 ```
-http://localhost:8080/Skoltech_OpenRAN_5G/iperf_load_balancer/1.0.0/ui/
+http://localhost:8080/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1/ui/
 ```
 
 Your Swagger definition lives here:
 
 ```
-http://localhost:8080/Skoltech_OpenRAN_5G/iperf_load_balancer/1.0.0/swagger.json
+http://localhost:8080/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1/swagger.json
 ```
 
 To launch the integration tests, use tox:
