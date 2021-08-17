@@ -103,4 +103,3 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Server_addr'
-
