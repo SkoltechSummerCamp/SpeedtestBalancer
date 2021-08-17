@@ -13,7 +13,7 @@ def server_delete_ip():  # noqa: E501
 
     :rtype: List[ServerAddr]
     """
-    return 'do some magic!', 200
+    return 'do some magic!', 400
 
 
 def server_post_ip(body=None):  # noqa: E501
