@@ -15,3 +15,4 @@ done
 echo restoring controllers
 cp *_controller.py server/swagger_server/controllers/
 rm *_controller.py
+sed -i 's/python_dateutil == 2.6.0/python_dateutil == 2.7.0/' server/requirements.txt # replace dateutil version. Error with UTP on 2.6.0
