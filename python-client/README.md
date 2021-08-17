@@ -51,25 +51,31 @@ import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
 
+# Configure OAuth2 access token for authorization: server_auth
+configuration = swagger_client.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
 # create an instance of the API class
 api_instance = swagger_client.ServerApi(swagger_client.ApiClient(configuration))
 
 try:
-    # send server ip to server
-    api_instance.do_action()
+    # delete server IP
+    api_response = api_instance.delete_ip()
+    pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ServerApi->do_action: %s\n" % e)
+    print("Exception when calling ServerApi->delete_ip: %s\n" % e)
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://localhost/v2*
+All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ServerApi* | [**do_action**](docs/ServerApi.md#do_action) | **POST** /server | send server ip to server
-*ServerApi* | [**get_results**](docs/ServerApi.md#get_results) | **GET** /server | optain server IP
+*ServerApi* | [**delete_ip**](docs/ServerApi.md#delete_ip) | **DELETE** /server | delete server IP
+*ServerApi* | [**get_ip**](docs/ServerApi.md#get_ip) | **GET** /server | optain server IP
+*ServerApi* | [**post_ip**](docs/ServerApi.md#post_ip) | **POST** /server | send server ip to balancer
 
 
 ## Documentation For Models
@@ -79,7 +85,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- All endpoints do not require authorization.
+
+## api_key
+
+- **Type**: API key
+- **API key parameter name**: api_key
+- **Location**: HTTP header
+
+## server_auth
+
+- **Type**: OAuth
+- **Flow**: implicit
+- **Authorization URL**: http://petstore.swagger.io/oauth/dialog
+- **Scopes**: 
+ - **write:server**: post server info
+ - **read:server**: get server info
 
 
 ## Author

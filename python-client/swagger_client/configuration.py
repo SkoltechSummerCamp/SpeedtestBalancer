@@ -40,7 +40,7 @@ class Configuration(object):
             return
 
         # Default Base url
-        self.host = "http://localhost:8080/v2"
+        self.host = "http://localhost"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -55,6 +55,9 @@ class Configuration(object):
         self.username = ""
         # Password for HTTP basic authentication
         self.password = ""
+
+        # access token for OAuth
+        self.access_token = ""
 
         # Logging Settings
         self.logger = {}
@@ -232,6 +235,21 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         return {
+            'api_key':
+                {
+                    'type': 'api_key',
+                    'in': 'header',
+                    'key': 'api_key',
+                    'value': self.get_api_key_with_prefix('api_key')
+                },
+
+            'server_auth':
+                {
+                    'type': 'oauth2',
+                    'in': 'header',
+                    'key': 'Authorization',
+                    'value': 'Bearer ' + self.access_token
+                },
 
         }
 

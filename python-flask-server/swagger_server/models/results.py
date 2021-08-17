@@ -15,21 +15,26 @@ class Results(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ipv4: str=None):  # noqa: E501
+    def __init__(self, ipv4: str=None, port: int=None):  # noqa: E501
         """Results - a model defined in Swagger
 
         :param ipv4: The ipv4 of this Results.  # noqa: E501
         :type ipv4: str
+        :param port: The port of this Results.  # noqa: E501
+        :type port: int
         """
         self.swagger_types = {
-            'ipv4': str
+            'ipv4': str,
+            'port': int
         }
 
         self.attribute_map = {
-            'ipv4': 'ipv4'
+            'ipv4': 'ipv4',
+            'port': 'port'
         }
 
         self._ipv4 = ipv4
+        self._port = port
 
     @classmethod
     def from_dict(cls, dikt) -> 'Results':
@@ -66,3 +71,24 @@ class Results(Model):
             raise ValueError("Invalid value for `ipv4`, length must be greater than or equal to `8`")  # noqa: E501
 
         self._ipv4 = ipv4
+
+    @property
+    def port(self) -> int:
+        """Gets the port of this Results.
+
+
+        :return: The port of this Results.
+        :rtype: int
+        """
+        return self._port
+
+    @port.setter
+    def port(self, port: int):
+        """Sets the port of this Results.
+
+
+        :param port: The port of this Results.
+        :type port: int
+        """
+
+        self._port = port

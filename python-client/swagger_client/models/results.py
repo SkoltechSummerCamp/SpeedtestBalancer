@@ -33,24 +33,29 @@ class Results(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'ipv4': 'str'
+        'ipv4': 'str',
+        'port': 'int'
     }
 
     attribute_map = {
-        'ipv4': 'ipv4'
+        'ipv4': 'ipv4',
+        'port': 'port'
     }
 
-    def __init__(self, ipv4=None, _configuration=None):  # noqa: E501
+    def __init__(self, ipv4=None, port=None, _configuration=None):  # noqa: E501
         """Results - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._ipv4 = None
+        self._port = None
         self.discriminator = None
 
         if ipv4 is not None:
             self.ipv4 = ipv4
+        if port is not None:
+            self.port = port
 
     @property
     def ipv4(self):
@@ -78,6 +83,27 @@ class Results(object):
             raise ValueError("Invalid value for `ipv4`, length must be greater than or equal to `8`")  # noqa: E501
 
         self._ipv4 = ipv4
+
+    @property
+    def port(self):
+        """Gets the port of this Results.  # noqa: E501
+
+
+        :return: The port of this Results.  # noqa: E501
+        :rtype: int
+        """
+        return self._port
+
+    @port.setter
+    def port(self, port):
+        """Sets the port of this Results.
+
+
+        :param port: The port of this Results.  # noqa: E501
+        :type: int
+        """
+
+        self._port = port
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -9,7 +9,7 @@ def main():
     app = connexion.App(__name__, specification_dir='./swagger/')
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('swagger.yaml', arguments={'title': 'Ipefr servers Balancer'})
-    app.run(port=8080)
+    app.run(port=8080, ssl_context='adhoc')
 
 
 if __name__ == '__main__':

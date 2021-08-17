@@ -20,6 +20,7 @@ def do_action():  # noqa: E501
     :rtype: None
     """
     remoteIP = request.remote_addr;
+    remotePort = request.environ.get('REMOTE_PORT')
     
     ip_dict[remoteIP] = True;
     return remoteIP;
@@ -38,5 +39,5 @@ def get_results():  # noqa: E501
             ip_dict[ip] = False;
             print(type(ip))
             print(ip)
-            return [ip]
+            return [{'ipv4': ip}]
     return 'no servers', 405

@@ -33,38 +33,38 @@ class ServerApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def do_action(self, **kwargs):  # noqa: E501
-        """send server ip to server  # noqa: E501
+    def delete_ip(self, **kwargs):  # noqa: E501
+        """delete server IP  # noqa: E501
 
-          # noqa: E501
+        Send by server during shutdown  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.do_action(async_req=True)
+        >>> thread = api.delete_ip(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: list[Results]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.do_action_with_http_info(**kwargs)  # noqa: E501
+            return self.delete_ip_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.do_action_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.delete_ip_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def do_action_with_http_info(self, **kwargs):  # noqa: E501
-        """send server ip to server  # noqa: E501
+    def delete_ip_with_http_info(self, **kwargs):  # noqa: E501
+        """delete server IP  # noqa: E501
 
-          # noqa: E501
+        Send by server during shutdown  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.do_action_with_http_info(async_req=True)
+        >>> thread = api.delete_ip_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: list[Results]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -80,7 +80,7 @@ class ServerApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method do_action" % key
+                    " to method delete_ip" % key
                 )
             params[key] = val
         del params['kwargs']
@@ -99,24 +99,20 @@ class ServerApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/Json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['server_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/server', 'POST',
+            '/server', 'DELETE',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='list[Results]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -124,13 +120,13 @@ class ServerApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_results(self, **kwargs):  # noqa: E501
+    def get_ip(self, **kwargs):  # noqa: E501
         """optain server IP  # noqa: E501
 
         Multiple status values can be provided with comma separated strings  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_results(async_req=True)
+        >>> thread = api.get_ip(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -140,18 +136,18 @@ class ServerApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_results_with_http_info(**kwargs)  # noqa: E501
+            return self.get_ip_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.get_results_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_ip_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def get_results_with_http_info(self, **kwargs):  # noqa: E501
+    def get_ip_with_http_info(self, **kwargs):  # noqa: E501
         """optain server IP  # noqa: E501
 
         Multiple status values can be provided with comma separated strings  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_results_with_http_info(async_req=True)
+        >>> thread = api.get_ip_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -171,7 +167,7 @@ class ServerApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_results" % key
+                    " to method get_ip" % key
                 )
             params[key] = val
         del params['kwargs']
@@ -193,10 +189,97 @@ class ServerApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['server_auth']  # noqa: E501
 
         return self.api_client.call_api(
             '/server', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[Results]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def post_ip(self, **kwargs):  # noqa: E501
+        """send server ip to balancer  # noqa: E501
+
+          # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.post_ip(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: list[Results]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.post_ip_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.post_ip_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def post_ip_with_http_info(self, **kwargs):  # noqa: E501
+        """send server ip to balancer  # noqa: E501
+
+          # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.post_ip_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: list[Results]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_ip" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['server_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/server', 'POST',
             path_params,
             query_params,
             header_params,

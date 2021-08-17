@@ -12,26 +12,36 @@ from swagger_server.test import BaseTestCase
 class TestServerController(BaseTestCase):
     """ServerController integration test stubs"""
 
-    def test_do_action(self):
-        """Test case for do_action
+    def test_delete_ip(self):
+        """Test case for delete_ip
 
-        send server ip to server
+        delete server IP
         """
         response = self.client.open(
-            '/v2/server',
-            method='POST',
-            content_type='application/json')
+            '//server',
+            method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_get_results(self):
-        """Test case for get_results
+    def test_get_ip(self):
+        """Test case for get_ip
 
         optain server IP
         """
         response = self.client.open(
-            '/v2/server',
+            '//server',
             method='GET')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
+    def test_post_ip(self):
+        """Test case for post_ip
+
+        send server ip to balancer
+        """
+        response = self.client.open(
+            '//server',
+            method='POST')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
