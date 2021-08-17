@@ -4,7 +4,6 @@ import six
 from swagger_server.models.server_addr import ServerAddr  # noqa: E501
 from swagger_server import util
 
-import ..dict
 
 
 def client_optain_ip():  # noqa: E501

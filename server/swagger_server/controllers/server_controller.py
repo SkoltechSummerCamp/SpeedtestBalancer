@@ -4,7 +4,6 @@ import six
 from swagger_server.models.server_addr import ServerAddr  # noqa: E501
 from swagger_server import util
 
-import ..dict
 
 
 def server_delete_ip():  # noqa: E501
@@ -15,7 +14,7 @@ def server_delete_ip():  # noqa: E501
 
     :rtype: List[ServerAddr]
     """
-    return 'do some magic!', 400
+    return 'do some magic!'
 
 
 def server_post_ip(body=None):  # noqa: E501

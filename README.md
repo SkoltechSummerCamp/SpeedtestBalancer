@@ -12,6 +12,8 @@ See [Iperf Server](https://github.com/SkoltechSummerCamp/SpeedtestService) and [
 Just start server
 
 ```bash
+cd server
+sudo python3 setup.py install 
 pip3 install -r requirements.txt
 python3 -m swagger_server
 ```

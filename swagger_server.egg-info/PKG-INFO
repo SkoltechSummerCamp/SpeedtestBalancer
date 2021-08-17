@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: swagger-server
+Version: 1.0.0
+Summary: Balancer
+Home-page: UNKNOWN
+Author-email: vinogradov.alek@gmail.com
+License: UNKNOWN
+Keywords: Swagger,Balancer
+Platform: UNKNOWN
+License-File: LICENSE
+
+    Simple iperf load balancer
+    
+
