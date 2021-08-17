@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  description: Simple iperf load balancer
+  version: 1.0.0-oas3
+  title: Balancer
+  contact:
+    email: you@your-company.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+  - name: client
+    description: can optain server ip
+  - name: server
+    description: can post self ip
+paths:
+  /addr:
+    get:
+      tags:
+        - client
+      summary: optain iperf server ip list to connect to
+      operationId: ClientOptainIP
+      description: Return servers ip list
+      responses:
+        '200':
+          description: ip found and returned to client
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Server_addr'
+        '503':
+          description: no server ip availible
+    post:
+      tags:
+        - server
+      summary: post self ip to balancer
+      operationId: ServerPostIP
+      description: When server makes free, post ip to balancer
+      requestBody:
+        $ref: '#/components/requestBodies/Server_addr'
+      responses:
+        '201':
+          description: ip added
+        '400':
+          description: invalid input, object invalid
+        '409':
+          description: an existing item already exists
+    delete:
+      tags:
+        - server
+      summary: delete server IP
+      description: Send by server during shutdown
+      operationId: ServerDeleteIP
+      responses:
+        '200':
+          description: OK
+          content:
+            application/Json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Server_addr'
+        '400':
+          description: Request failed
+servers:
+  - url: >-
+      https://localhost/Skoltech_OpenRAN_5G/iperf_load_balancer/1.0.0
+  - url: >-
+      http://localhost/Skoltech_OpenRAN_5G/iperf_load_balancer/1.0.0
+components:
+  requestBodies:
+    Server_addr:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Server_addr'
+      description: port of iperf server. Ip and time could be emply
+  schemas:
+    Server_addr:
+      type: object
+      required:
+        - port
+      properties:
+        ip:
+          type: string
+          format: ipv4
+          example: 192.168.0.1
+        port:
+          type: integer
+          minimum: 0
+          maximum: 65535
+          example: 5201
+        time:
+          type: string
+          format: date-time
+          example: '2016-08-29T09:12:33.001Z'
