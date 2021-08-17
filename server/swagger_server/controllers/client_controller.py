@@ -15,6 +15,4 @@ def client_optain_ip():  # noqa: E501
 
     :rtype: List[ServerAddr]
     """
-    try:
-        addr = 
     return 'do some magic!'
