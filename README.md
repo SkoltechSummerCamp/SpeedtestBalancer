@@ -9,3 +9,5 @@ Just start server
 ## Client side
 
 Use example code in your project
+
+> Install Swagger and fix update_prj_from_yaml.sh to regenerate swagger locally 

@@ -6,7 +6,7 @@ jobs:
   generate:
    runs-on: ubuntu-latest
    steps:
-    - uses: actions/checkout@master    
+    - uses: actions/checkout@main    
     - name: save_controllers
       run: cp server/swagger_server/controllers/*_controller.py . # save our implementation for later use
     - name: Swagger Codegen v3
