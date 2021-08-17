@@ -1,5 +1,4 @@
 name: Swagger code generator
-description: "Github action for swagger python-flack code generation with file replacement with user implementations"
 
 on: [push]
 
