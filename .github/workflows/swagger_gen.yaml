@@ -7,8 +7,7 @@ jobs:
   generate:
    runs-on: ubuntu-latest
    steps:
-    - uses: actions/checkout@master
     - name: save_controllers
-    - shell: bash
+      uses: actions/checkout@master    
       run: ./update_prj_from_yaml.sh
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes
