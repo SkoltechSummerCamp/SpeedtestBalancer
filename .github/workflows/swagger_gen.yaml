@@ -9,7 +9,8 @@ jobs:
     - uses: actions/checkout@master    
     - name: save_controllers
       run: ./cp server/swagger_server/controllers/*_controller.py . # save our implementation for later use
-    - uses: ducksify/swagger-codegen-action@V3.0
+    - name: Swagger Codegen v3
+      uses: ducksify/swagger-codegen-action@v3.0
       with:
         args: >
           -i server/swagger_server/swagger/swagger.yaml 
