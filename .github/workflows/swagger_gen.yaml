@@ -13,9 +13,9 @@ jobs:
     - uses: ducksify/swagger-codegen-action@V3.0
       with:
         args: >
-        -i server/swagger_server/swagger/swagger.yaml 
-        -l python-flask 
-        -o server
+          -i server/swagger_server/swagger/swagger.yaml 
+          -l python-flask 
+          -o server
     - name: restore controllers
       run: |
       echo saving generated controllers to controllers_new
