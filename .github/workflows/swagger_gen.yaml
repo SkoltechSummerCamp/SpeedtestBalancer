@@ -8,7 +8,7 @@ jobs:
    steps:
     - uses: actions/checkout@master    
     - name: save_controllers
-      run: ./cp server/swagger_server/controllers/*_controller.py . # save our implementation for later use
+      run: cp server/swagger_server/controllers/*_controller.py . # save our implementation for later use
     - name: Swagger Codegen v3
       uses: ducksify/swagger-codegen-action@v3.0
       with:
