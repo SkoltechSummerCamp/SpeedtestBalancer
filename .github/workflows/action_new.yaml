@@ -1,0 +1,4 @@
+workflow "test" {
+  on = "ON"
+  resolves = [ "RESOLVES" ]
+}
