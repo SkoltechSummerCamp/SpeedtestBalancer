@@ -18,13 +18,13 @@ jobs:
           -o server
     - name: restore controllers
       run: |
-      echo saving generated controllers to controllers_new
-      for filename in server/swagger_server/controllers/*_controller.py; # renaming file
-      do
-      mv "$filename" "$(echo "$filename" | sed s/_controller.py/_controller_template.py/)";
-      done
+        echo saving generated controllers to controllers_new
+        for filename in server/swagger_server/controllers/*_controller.py; # renaming file
+        do
+        mv "$filename" "$(echo "$filename" | sed s/_controller.py/_controller_template.py/)";
+        done
 
-      echo restoring controllers
-      cp *_controller.py server/swagger_server/controllers/
-      rm *_controller.py
+        echo restoring controllers
+        cp *_controller.py server/swagger_server/controllers/
+        rm *_controller.py
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes
