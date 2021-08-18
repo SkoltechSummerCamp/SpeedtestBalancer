@@ -7,7 +7,7 @@ jobs:
    runs-on: ubuntu-latest
    strategy:
      matrix:
-      python-version: [3.6, 3.7, 3.8, 3.9]
+      python-version: [3.6]
    steps:
     - uses: actions/checkout@main
     - name: Setup Python
@@ -20,6 +20,8 @@ jobs:
         pip install tox 
     - name: fix flask version
       run: sed -i 's/flask_testing==0.8.0/flask_testing==0.8.1/' server/test-requirements.txt 
+    - name: set tox version
+      run: sed -i 's/envlist = py35/envlist = py36/' server/tox.ini
     - name: run tox
       run: |
         cd server
