@@ -17,7 +17,7 @@ def client_optain_ip():  # noqa: E501
     :rtype: List[ServerAddr]
     """
     try:
-        ((ip, port), time) = ServerDictInst.ServerDict_get()
+        ((ip, port), time) = ServerDictInst.get()
         return ServerAddr(ip=ip, port=port, time=time), 200
     except:
         return {}, 503

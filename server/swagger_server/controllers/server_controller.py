@@ -9,16 +9,28 @@ from datetime import datetime
 from ..config import *
 
 
-
-def server_delete_ip():  # noqa: E501
+def server_delete_ip(body=None):  # noqa: E501
     """delete server IP
 
     Send by server during shutdown # noqa: E501
 
+    :param body: port of iperf server. Ip and time could be emply
+    :type body: dict | bytes
 
     :rtype: List[ServerAddr]
     """
-    return 'do some magic!'
+    if connexion.request.is_json:
+        body = ServerAddr.from_dict(connexion.request.get_json())  # noqa: E501
+        if body.ip is None:
+            body.ip = connexion.request.remote_addr
+        if body.time is None:
+            body.time = datetime.now()
+    try:
+        time = ServerDictInst.remove(body)
+        print(type(time))
+        return time, 200
+    except:
+        return {}, 400
 
 
 def server_post_ip(body=None):  # noqa: E501
@@ -38,7 +50,7 @@ def server_post_ip(body=None):  # noqa: E501
         if body.time is None:
             body.time = datetime.now()
         try:
-            ServerDictInst.ServerDict_add(body)
+            ServerDictInst.add(body)
         except:
             return {}, 409
         return {}, 201
