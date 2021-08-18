@@ -53,12 +53,15 @@ paths:
         "409":
           description: an existing item already exists
       x-openapi-router-controller: swagger_server.controllers.server_controller
-    delete:
+  /addr_del:
+    post:
       tags:
       - server
       summary: delete server IP
       description: Send by server during shutdown
       operationId: server_delete_ip
+      requestBody:
+        $ref: '#/components/requestBodies/Server_addr'
       responses:
         "200":
           description: OK
@@ -103,4 +106,3 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Server_addr'
-
