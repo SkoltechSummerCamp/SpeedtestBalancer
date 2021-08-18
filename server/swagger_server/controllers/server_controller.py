@@ -1,6 +1,7 @@
 import connexion
 import six
 
+from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server.models.server_addr import ServerAddr  # noqa: E501
 from swagger_server import util
 
@@ -27,8 +28,7 @@ def server_delete_ip(body=None):  # noqa: E501
             body.time = datetime.now()
     try:
         time = ServerDictInst.remove(body)
-        print(type(time))
-        return time, 200
+        return InlineResponse200(time)
     except:
         return {}, 400
 
