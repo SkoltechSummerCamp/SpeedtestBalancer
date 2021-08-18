@@ -1,5 +1,8 @@
 # SpeedtestBalancer
 
+![Code Generator](https://github.com/AleksandrVin/SpeedtestBalancer/actions/workflows/swagger_gen.yaml/badge.svg)
+![Tox testing](https://github.com/AleksandrVin/SpeedtestBalancer/actions/workflows/tox_testing.yaml/badge.svg)
+
 Used to provide users with IP addresses of Iperf servers.
 See [Iperf Server](https://github.com/SkoltechSummerCamp/SpeedtestService) and [Mobile App](https://github.com/SkoltechSummerCamp/SpeedtestApplication)
 
@@ -22,6 +25,13 @@ or with docker
 
 ```bash
 docker run Dockerfile
+```
+
+Make use of __SERVERLOGPATH__ environment variable. Server list will be stored there. Deleted and used
+
+```bash
+export SERVERLOGPATH=logs/log.txt
+echo $SERVERLOGPATH
 ```
 
 ## WorkFlow
