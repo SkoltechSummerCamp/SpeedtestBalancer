@@ -30,4 +30,8 @@ jobs:
         rm *_controller.py
         echo replacing dateutil version 
         sed -i 's/python_dateutil == 2.6.0/python_dateutil == 2.7.0/' server/requirements.txt # replace dateutil version. Error with UTP on 2.6.0
+        - name: fix flask version
+        sed -i 's/flask_testing==0.8.0/flask_testing==0.8.1/' server/test-requirements.txt 
+        set tox version
+        sed -i 's/envlist = py35/envlist = py36/' server/tox.ini
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes

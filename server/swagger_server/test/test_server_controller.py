@@ -18,7 +18,7 @@ class TestServerController(BaseTestCase):
         delete server IP
         """
         response = self.client.open(
-            '/Skoltech_OpenRAN_5G/iperf_load_balancer/1.0.0/addr',
+            '/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1/addr',
             method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -30,7 +30,7 @@ class TestServerController(BaseTestCase):
         """
         body = ServerAddr()
         response = self.client.open(
-            '/Skoltech_OpenRAN_5G/iperf_load_balancer/1.0.0/addr',
+            '/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1/addr',
             method='POST',
             data=json.dumps(body),
             content_type='application/json')

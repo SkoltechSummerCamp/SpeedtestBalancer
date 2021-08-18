@@ -18,7 +18,7 @@ class TestClientController(BaseTestCase):
         optain iperf server ip list to connect to
         """
         response = self.client.open(
-            '/Skoltech_OpenRAN_5G/iperf_load_balancer/1.0.0/addr',
+            '/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1/addr',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
