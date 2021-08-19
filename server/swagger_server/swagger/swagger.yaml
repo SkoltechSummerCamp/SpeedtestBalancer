@@ -9,8 +9,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 0.0.1-oas3
 servers:
-- url: https://localhost/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1
-- url: http://localhost/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1
+- url: http://localhost:8080/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1
 tags:
 - name: client
   description: can optain server ip
