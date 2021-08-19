@@ -14,13 +14,21 @@ class ServerDict:
     def __init__(self):
         self.path_to_log = os.environ.get("SERVERLOGPATH")
         if self.path_to_log is not None:
+            os.makedirs(os.path.dirname(self.path_to_log), exist_ok=True)
             self.log_file = open(self.path_to_log, 'a')
             self.log_file.write(datetime.now().strftime('%X %x %Z') + ' server started\n')
             self.log_file.flush()
 
-    def __del__(self):
-        if self.log_file is not None:
-            self.log_file.close()
+# Found to open be deleted before __del__ being called
+#     def __del__(self):
+#         if self.log_file is not None:
+#             self.log_file.close()
+
+#         self.path_to_log = os.environ.get("SERVERLOGPATH")
+#         if self.path_to_log is not None:
+#             with open(self.path_to_log, 'a') as log:
+#                 log.write(datetime.now().strftime('%X %x %Z') + ' server stopped\n')
+# 
     
     def add(self, body):
         if body.time > datetime.now():

@@ -30,7 +30,7 @@ docker run Dockerfile
 Make use of __SERVERLOGPATH__ environment variable. Server list will be stored there. Deleted and used
 
 ```bash
-export SERVERLOGPATH=logs/log.txt
+export SERVERLOGPATH=../logs/log.txt
 echo $SERVERLOGPATH
 ```
 
