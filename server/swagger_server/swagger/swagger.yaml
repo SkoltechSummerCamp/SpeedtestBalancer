@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: Balancer
+  description: Simple iperf load balancer
+  contact:
+    email: vinogradov.alek@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1-oas3
+servers:
+- url: http://localhost:8080/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1
+tags:
+- name: client
+  description: can optain server ip
+- name: server
+  description: can post self ip
+paths:
+  /addr:
+    get:
+      tags:
+      - client
+      summary: optain iperf server ip list to connect to
+      description: Return servers ip list
+      operationId: client_optain_ip
+      responses:
+        "200":
+          description: ip found and returned to client
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Server_addr'
+                x-content-type: application/json
+        "503":
+          description: no server ip availible
+      x-openapi-router-controller: swagger_server.controllers.client_controller
+    post:
+      tags:
+      - server
+      summary: post self ip to balancer
+      description: "When server makes free, post ip to balancer"
+      operationId: server_post_ip
+      requestBody:
+        $ref: '#/components/requestBodies/Server_addr'
+      responses:
+        "201":
+          description: ip added
+        "400":
+          description: "invalid input, object invalid"
+        "409":
+          description: an existing item already exists
+      x-openapi-router-controller: swagger_server.controllers.server_controller
+  /addr_del:
+    post:
+      tags:
+      - server
+      summary: delete server IP
+      description: Send by server during shutdown.
+      operationId: server_delete_ip
+      requestBody:
+        $ref: '#/components/requestBodies/Server_addr'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/Json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200'
+                x-content-type: application/Json
+        "400":
+          description: Request failed
+      x-openapi-router-controller: swagger_server.controllers.server_controller
+components:
+  schemas:
+    Server_addr:
+      required:
+      - port
+      type: object
+      properties:
+        ip:
+          type: string
+          format: ipv4
+          example: 192.168.0.1
+        port:
+          maximum: 65535
+          minimum: 0
+          type: integer
+          example: 5201
+        time:
+          type: string
+          format: date-time
+          example: 2016-08-29T09:12:33.001Z
+      example:
+        port: 5201
+        ip: 192.168.0.1
+        time: 2016-08-29T09:12:33.001Z
+    inline_response_200:
+      type: object
+      properties:
+        time:
+          type: string
+          format: datatime
+          example: 2016-08-29T09:12:33.001Z
+      description: time when server was added
+      example:
+        time: 2016-08-29T09:12:33.001Z
+  requestBodies:
+    Server_addr:
+      description: port of iperf server. Ip and time could be emply
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Server_addr'
+
