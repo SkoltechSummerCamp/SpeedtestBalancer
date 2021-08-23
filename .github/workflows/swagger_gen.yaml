@@ -35,11 +35,11 @@ jobs:
     - name: patch __main__.py
       run: |
         head -2 server/swagger_server/__main__.py | grep vinogradov.alek@gmail.com
-        if [ $? -eq 0 ];
-        then
-          echo "already pathed"
-        else
-          echo "patching iPerf"
-          patch server/swagger_server/__main__.py < server/__main__.patch
-        fi
+        # if [ $? -eq 0 ];
+        # then
+        #   echo "already pathed"
+        # else
+        #   echo "patching iPerf"
+        #   patch server/swagger_server/__main__.py < server/__main__.patch
+        # fi
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes
