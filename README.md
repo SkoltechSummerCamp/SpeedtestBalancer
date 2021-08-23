@@ -16,7 +16,7 @@ Just start server
 
 ```bash
 cd server
-sudo python3 setup.py install 
+python3 setup.py install --user
 pip3 install -r requirements.txt
 python3 -m swagger_server
 ```
@@ -24,7 +24,8 @@ python3 -m swagger_server
 or with docker
 
 ```bash
-docker run Dockerfile
+cd server
+docker run -p 8080:8080
 ```
 
 Make use of __SERVERLOGPATH__ environment variable. Server list will be stored there. Deleted and used

@@ -14,29 +14,34 @@ class ServerAddr(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, ip: str=None, port: int=None, time: datetime=None):  # noqa: E501
+    def __init__(self, ip: str=None, port: int=None, port_iperf: int=None, time: datetime=None):  # noqa: E501
         """ServerAddr - a model defined in Swagger
 
         :param ip: The ip of this ServerAddr.  # noqa: E501
         :type ip: str
         :param port: The port of this ServerAddr.  # noqa: E501
         :type port: int
+        :param port_iperf: The port_iperf of this ServerAddr.  # noqa: E501
+        :type port_iperf: int
         :param time: The time of this ServerAddr.  # noqa: E501
         :type time: datetime
         """
         self.swagger_types = {
             'ip': str,
             'port': int,
+            'port_iperf': int,
             'time': datetime
         }
 
         self.attribute_map = {
             'ip': 'ip',
             'port': 'port',
+            'port_iperf': 'port_iperf',
             'time': 'time'
         }
         self._ip = ip
         self._port = port
+        self._port_iperf = port_iperf
         self._time = time
 
     @classmethod
@@ -75,6 +80,7 @@ class ServerAddr(Model):
     def port(self) -> int:
         """Gets the port of this ServerAddr.
 
+        port of Service server  # noqa: E501
 
         :return: The port of this ServerAddr.
         :rtype: int
@@ -85,6 +91,7 @@ class ServerAddr(Model):
     def port(self, port: int):
         """Sets the port of this ServerAddr.
 
+        port of Service server  # noqa: E501
 
         :param port: The port of this ServerAddr.
         :type port: int
@@ -93,6 +100,31 @@ class ServerAddr(Model):
             raise ValueError("Invalid value for `port`, must not be `None`")  # noqa: E501
 
         self._port = port
+
+    @property
+    def port_iperf(self) -> int:
+        """Gets the port_iperf of this ServerAddr.
+
+        port of iperf server  # noqa: E501
+
+        :return: The port_iperf of this ServerAddr.
+        :rtype: int
+        """
+        return self._port_iperf
+
+    @port_iperf.setter
+    def port_iperf(self, port_iperf: int):
+        """Sets the port_iperf of this ServerAddr.
+
+        port of iperf server  # noqa: E501
+
+        :param port_iperf: The port_iperf of this ServerAddr.
+        :type port_iperf: int
+        """
+        if port_iperf is None:
+            raise ValueError("Invalid value for `port_iperf`, must not be `None`")  # noqa: E501
+
+        self._port_iperf = port_iperf
 
     @property
     def time(self) -> datetime:

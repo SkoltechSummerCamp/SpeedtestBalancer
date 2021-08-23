@@ -7,12 +7,12 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 0.0.1-oas3
+  version: 0.1.0
 servers:
-- url: http://localhost:8080/Skoltech_OpenRAN_5G/iperf_load_balancer/0.0.1
+- url: http://localhost:8080/Skoltech_OpenRAN_5G/iperf_load_balancer/0.1.0
 tags:
 - name: client
-  description: can optain server ip
+  description: can obtain server ip
 - name: server
   description: can post self ip
 paths:
@@ -20,9 +20,9 @@ paths:
     get:
       tags:
       - client
-      summary: optain iperf server ip list to connect to
+      summary: obtain iperf server ip list to connect to
       description: Return servers ip list
-      operationId: client_optain_ip
+      operationId: client_obtain_ip
       responses:
         "200":
           description: ip found and returned to client
@@ -79,6 +79,7 @@ components:
     Server_addr:
       required:
       - port
+      - port_iperf
       type: object
       properties:
         ip:
@@ -89,7 +90,14 @@ components:
           maximum: 65535
           minimum: 0
           type: integer
-          example: 5201
+          description: port of Service server
+          example: 5001
+        port_iperf:
+          maximum: 65535
+          minimum: 0
+          type: integer
+          description: port of iperf server
+          example: 5000
         time:
           type: string
           format: date-time
