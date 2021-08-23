@@ -35,12 +35,13 @@ jobs:
         head -2 server/swagger_server/__main__.py | grep vinogradov.alek@gmail.com
         #If the patch has not been applied then the $? which is the exit status 
         #for last command would have a success status code = 0
+        echo testing patched
         if [ $? -eq 0 ];
         then
-             echo "already pathed"
+             echo already pathed
         else
             #apply the patch
-            echo "patching iPerf"
+            echo patching iPerf
             patch server/swagger_server/__main__.py < server/__main__.patch
         fi
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes
