@@ -9,7 +9,7 @@ from ..config import *
 
 
 def client_obtain_ip():  # noqa: E501
-    """optain iperf server ip list to connect to
+    """obtain iperf server ip list to connect to
 
     Return servers ip list # noqa: E501
 
