@@ -121,6 +121,8 @@ class ServerAddr(Model):
         :param port_iperf: The port_iperf of this ServerAddr.
         :type port_iperf: int
         """
+        if port_iperf is None:
+            raise ValueError("Invalid value for `port_iperf`, must not be `None`")  # noqa: E501
 
         self._port_iperf = port_iperf
 
