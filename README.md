@@ -19,13 +19,14 @@ cd server
 python3 setup.py install --user
 pip3 install -r requirements.txt
 python3 -m swagger_server
+export BALANCER_PORT=8080 # port for server to run
 ```
 
 or with docker
 
 ```bash
 cd server
-docker run -p 8080:8080
+docker run -p $BALANCER_PORT:$BALANCER_PORT
 ```
 
 Make use of __SERVERLOGPATH__ environment variable. Server list will be stored there. Deleted and used
