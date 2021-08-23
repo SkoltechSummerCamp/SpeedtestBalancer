@@ -33,6 +33,7 @@ jobs:
         sed -i 's/flask_testing==0.8.0/flask_testing==0.8.1/' server/test-requirements.txt 
         sed -i 's/envlist = py35/envlist = py36/' server/tox.ini
     - name: patch __main__.py
+      if: always()
       run: |
         head -2 server/swagger_server/__main__.py | grep vinogradov.alek@gmail.com
         # if [ $? -eq 0 ];
