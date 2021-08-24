@@ -47,8 +47,10 @@ def server_post_ip(body=None):  # noqa: E501
         body = ServerAddr.from_dict(connexion.request.get_json())  # noqa: E501
         if body.ip is None:
             body.ip = connexion.request.remote_addr
-        if body.time is None:
-            body.time = datetime.now()
+        if body.port is None:
+            body.port = connexion.request.remote_port
+        #if body.time is None:
+            #body.time = datetime.now()
         try:
             ServerDictInst.add(body)
         except:
