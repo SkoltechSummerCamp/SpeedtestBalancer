@@ -1,6 +1,10 @@
 name: Swagger code generator
 
-on: [push]
+on: 
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
 
 jobs:
   generate:
@@ -38,3 +42,54 @@ jobs:
         echo "patching __main__.py"
         patch server/swagger_server/__main__.py < server/__main__.patch
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes
+          
+  speedtest-service:
+    runs-on: ubuntu-20.04
+    needs: generate
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: actions/download-artifact@v2
+        with:
+          name: iperf-2.0.13.${{ github.run_number }}
+      
+      - name: Setup artifact content
+        run: |
+          mkdir gh-artifacts/
+          mv server/ gh-artifacts/server/
+          
+          echo "artifactName=speedtest-service-$(cat VERSION).$GITHUB_RUN_NUMBER" > $GITHUB_ENV
+      
+      - name: Upload all server files to artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.artifactName }}
+          path: gh-artifacts/*
+          
+  publish-to-dockerhub:
+    runs-on: ubuntu-20.04
+    needs: speedtest-service
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup version variable
+        run: echo "version=$(cat VERSION)" > $GITHUB_ENV
+    
+      - uses: actions/download-artifact@v2
+        with:
+          name: speedtest-balancer-${{ env.version }}.${{ github.run_number }}
+          path: gh-artifacts
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./gh-artifacts
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/speedtest-balancer:${{ env.version }}
