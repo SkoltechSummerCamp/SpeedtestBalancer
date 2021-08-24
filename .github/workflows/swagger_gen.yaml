@@ -48,11 +48,7 @@ jobs:
     needs: generate
     steps:
       - uses: actions/checkout@v2
-      
-      - uses: actions/download-artifact@v2
-        with:
-          name: iperf-2.0.13.${{ github.run_number }}
-      
+    
       - name: Setup artifact content
         run: |
           mkdir gh-artifacts/
