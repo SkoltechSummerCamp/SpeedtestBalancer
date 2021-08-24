@@ -1,4 +1,4 @@
-name: Swagger code generator
+name: Swagger code generator and docker publish
 
 on: 
   push:
@@ -54,7 +54,7 @@ jobs:
           mkdir gh-artifacts/
           mv server/ gh-artifacts/server/
           
-          echo "artifactName=speedtest-service-$(cat VERSION).$GITHUB_RUN_NUMBER" > $GITHUB_ENV
+          echo "artifactName=speedtest-balancer.$GITHUB_RUN_NUMBER" > $GITHUB_ENV
       
       - name: Upload all server files to artifacts
         uses: actions/upload-artifact@v2
@@ -74,7 +74,7 @@ jobs:
     
       - uses: actions/download-artifact@v2
         with:
-          name: speedtest-balancer-${{ env.version }}.${{ github.run_number }}
+          name: speedtest-balancer.${{ github.run_number }}
           path: gh-artifacts
 
       - name: Log in to Docker Hub
