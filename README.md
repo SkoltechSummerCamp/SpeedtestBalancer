@@ -26,7 +26,7 @@ or with docker
 
 ```bash
 cd server
-docker run -p $BALANCER_PORT:$BALANCER_PORT
+docker run -p $PORT_OUT:$BALANCER_PORT docker_image_name
 ```
 
 Make use of __SERVERLOGPATH__ environment variable. Server list will be stored there. Deleted and used

@@ -52,6 +52,7 @@ jobs:
       - name: Setup artifact content
         run: |
           mkdir gh-artifacts/
+          mv Dockerfile gh-artifacts/
           mv server/ gh-artifacts/server/
           
           echo "artifactName=speedtest-balancer.$GITHUB_RUN_NUMBER" > $GITHUB_ENV
