@@ -26,6 +26,6 @@ then
     echo "already pathed"
 else
     #apply the patch
-    echo "patching iPerf"
+    echo "patching __main__.py"
     patch server/swagger_server/__main__.py < server/__main__.patch
 fi
