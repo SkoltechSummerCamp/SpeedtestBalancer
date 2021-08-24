@@ -39,7 +39,7 @@ echo $SERVERLOGPATH
 ## WorkFlow
 
 1. Update Swagger-api
-[Swagger HUB with API](https://app.swaggerhub.com/apis/vsasha1305/Skoltech_OpenRAN_5G_Group_Balancer_API/0.0.1-oas3)
+[Swagger HUB with API](https://app.swaggerhub.com/apis/vsasha1305/Skoltech_OpenRAN_5G_Group_Balancer_API/0.1.0-oas3)
 2. Sync Swagger Hub with GitHub. Action will regenerate code and commit it.
 3. Pull changes
 4. Implement new endpoints inside *_controllers.py, using Connexion library. Generated templates stored in *_controllers_new.py.
