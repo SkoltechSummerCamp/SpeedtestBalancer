@@ -49,8 +49,8 @@ def server_post_ip(body=None):  # noqa: E501
             body.ip = connexion.request.remote_addr
         if body.port is None:
             body.port = connexion.request.remote_port
-        #if body.time is None:
-            #body.time = datetime.now()
+        if body.time is None:
+            body.time = datetime.now()
         try:
             ServerDictInst.add(body)
         except:
