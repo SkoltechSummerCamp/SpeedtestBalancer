@@ -1,6 +1,6 @@
 # SpeedtestBalancer
 
-![Code Generator](https://github.com/AleksandrVin/SpeedtestBalancer/actions/workflows/swagger_gen.yaml/badge.svg)
+![Code Generator](https://github.com/AleksandrVin/SpeedtestBalancer/actions/workflows/swagger_gen_and_publish.yaml/badge.svg)
 ![Tox testing](https://github.com/AleksandrVin/SpeedtestBalancer/actions/workflows/tox_testing.yaml/badge.svg)
 
 Used to provide users with IP addresses of Iperf servers.
@@ -18,6 +18,8 @@ Just start server
 cd server
 python3 setup.py install --user
 pip3 install -r requirements.txt
+python3 setup.py install --user
+export BALANCER_PORT=8080 # port for server to run
 python3 -m swagger_server
 ```
 
@@ -25,7 +27,7 @@ or with docker
 
 ```bash
 cd server
-docker run -p 8080:8080
+docker run -p $PORT_OUT:$BALANCER_PORT docker_image_name
 ```
 
 Make use of __SERVERLOGPATH__ environment variable. Server list will be stored there. Deleted and used
@@ -38,7 +40,7 @@ echo $SERVERLOGPATH
 ## WorkFlow
 
 1. Update Swagger-api
-[Swagger HUB with API](https://app.swaggerhub.com/apis/vsasha1305/Skoltech_OpenRAN_5G_Group_Balancer_API/0.0.1-oas3)
+[Swagger HUB with API](https://app.swaggerhub.com/apis/vsasha1305/Skoltech_OpenRAN_5G_Group_Balancer_API/0.1.0-oas3)
 2. Sync Swagger Hub with GitHub. Action will regenerate code and commit it.
 3. Pull changes
 4. Implement new endpoints inside *_controllers.py, using Connexion library. Generated templates stored in *_controllers_new.py.
