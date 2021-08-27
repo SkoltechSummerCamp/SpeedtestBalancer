@@ -89,4 +89,4 @@ jobs:
         with:
           context: ./gh-artifacts
           push: true
-          tags: skoltech/speedtest-service:${{ env.version }}
+          tags: skoltech/speedtest-service:${{ env.version }}.${{ github.run_number }} skoltech/speedtest-service:latest
