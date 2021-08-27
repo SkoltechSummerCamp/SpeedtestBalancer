@@ -89,4 +89,4 @@ jobs:
         with:
           context: ./gh-artifacts
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/speedtest-balancer:${{ env.version }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/speedtest-service:${{ env.version }}
