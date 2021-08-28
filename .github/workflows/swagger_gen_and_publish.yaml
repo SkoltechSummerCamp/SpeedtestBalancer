@@ -89,4 +89,4 @@ jobs:
         with:
           context: ./gh-artifacts
           push: true
-          tags: skoltech/speedtest-balancer:${{ env.version }}.${{ github.run_number }} skoltech/speedtest-balancer:latest
+          tags: skoltech/speedtest-balancer:${{ env.version }}.${{ github.run_number }} #skoltech/speedtest-balancer:latest
