@@ -1,7 +1,7 @@
 # SpeedtestBalancer
 
-![Code Generator](https://github.com/AleksandrVin/SpeedtestBalancer/actions/workflows/swagger_gen_and_publish.yaml/badge.svg)
-![Tox testing](https://github.com/AleksandrVin/SpeedtestBalancer/actions/workflows/tox_testing.yaml/badge.svg)
+![Code Generator](https://github.com/SkoltechSummerCamp/SpeedtestBalancer/actions/workflows/swagger_gen_and_publish.yaml/badge.svg)
+![Tox testing](https://github.com/SkoltechSummerCamp/SpeedtestBalancer/actions/workflows/tox_testing.yaml/badge.svg)
 
 Used to provide users with IP addresses of Iperf servers.
 See [Iperf Server](https://github.com/SkoltechSummerCamp/SpeedtestService) and [Mobile App](https://github.com/SkoltechSummerCamp/SpeedtestApplication)
