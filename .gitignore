@@ -64,3 +64,13 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# SQLite3 database
+*.sqlite3
+
+# IntelliJ IDEA
+/.idea
+*.iml
+
+# Environment variables loaded from file
+.env
