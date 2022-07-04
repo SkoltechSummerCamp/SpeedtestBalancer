@@ -5,6 +5,10 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      SECRET_KEY: SECRET_KEY
+      DEBUG: False
+      SUPPORT_EMAIL: noreply@5gst.ru
     steps:
     - uses: actions/checkout@main
     - name: Install pip, pipenv and packages from Pipfile
