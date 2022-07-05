@@ -1,16 +1,16 @@
-FROM python:3.6-alpine
+FROM ubuntu:20.04
 
 EXPOSE 8080
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY server/ /usr/src/app/
+COPY . /usr/src/app/
 
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN ["apt-get", "update"]
+RUN sh -c 'yes | apt-get install gcc python3.8 python3-pip'
+RUN ["python3.8", "-m", "pip", "install", "--upgrade", "pip"]
+RUN ["pip", "install", "pipenv"]
+RUN ["pipenv", "install"]
 
-CMD python3 setup.py install --user
-
-ENTRYPOINT ["python3"]
-
-CMD ["-m", "swagger_server"]
+CMD ["pipenv", "run", "gunicorn", "balancer.wsgi", "-b", ":8080"]

@@ -1,8 +1,0 @@
-1a2
-> # Patched by AleksandrVi vinogradov.alek@gmail.com
-5a7
-> import os
-12c14
-<     app.run(port=8080)
----
->     app.run(port=os.getenv('BALANCER_PORT', "8080"))
