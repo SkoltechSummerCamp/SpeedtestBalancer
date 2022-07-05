@@ -40,10 +40,10 @@ class ServiceRegistrationView(mixins.DestroyModelMixin,
         responses={
             204: openapi.Response('Service unregistered', serializers.ServerAddressRequestSerializer),
             400: openapi.Response('Invalid request body'),
+            404: openapi.Response('Service was not found'),
         },
     )
     def delete(self, request, *args, **kwargs):
-        self.get_object()
         return self.destroy(request, *args, **kwargs)
 
 

@@ -13,11 +13,8 @@ class ServerAddressResponseSerializer(serializers.ModelSerializer):
 
 class ServerAddressRequestSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
-        ip = self.context['request'].META.get('REMOTE_ADDR')
-        if ip is None:
-            raise serializers.ValidationError(detail="Could not recognize service address")
-        return {'ip': ip, 'time': datetime.datetime.utcnow(), **attrs}
+        return {'time': datetime.datetime.utcnow(), **attrs}
 
     class Meta:
         model = models.ServerAddress
-        fields = ('port', 'port_iperf')
+        fields = ('ip', 'port', 'port_iperf')
