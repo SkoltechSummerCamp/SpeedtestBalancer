@@ -37,6 +37,7 @@ class ServiceRegistrationView(mixins.DestroyModelMixin,
 
     @swagger_auto_schema(
         operation_description='Unregister caller as service',
+        request_body=serializers.ServerAddressRequestSerializer,
         responses={
             204: openapi.Response('Service unregistered', serializers.ServerAddressRequestSerializer),
             400: openapi.Response('Invalid request body'),
